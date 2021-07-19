@@ -15119,3 +15119,8 @@ debug1: Exit status 127
 
 2021-07-19 12:08:36,105 - Mon Jul 19 12:08:36 2021 - DRED2 coordinates: ,,,
 
+2021-07-19 15:18:34,015 - Mon Jul 19 15:18:34 2021 - Scanning for devices. Please wait...
+2021-07-19 15:18:34,017 - Mon Jul 19 15:18:34 2021 - Scanning: ['DRED1', 'DRED2']
+2021-07-19 15:18:39,744 - Mon Jul 19 15:18:39 2021 - Missing:  ['DRED1', 'DRED2']
+2021-07-19 15:18:39,744 - Mon Jul 19 15:18:39 2021 - Found:    []
+2021-07-19 15:18:39,745 - Mon Jul 19 15:18:39 2021 - No DREDs loaded. Check Power and Wifi connections...
