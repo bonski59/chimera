@@ -1,0 +1,23 @@
+on start 
+	initialization process 
+		ping each ras pi
+		thread with module test runs post ping
+		2 csvs and one line updates at a time 
+
+UI 
+	device sel. with command options 
+		call 
+		text (GSM done, UMTS done)
+		test module (GSM done, UMTS done)
+		on/off module 
+		ping pi (is this necessary?)
+		 
+	device list 
+		build csv assoc with obj and IP
+		mel rose devices list 
+		cannon devices list
+			obj name, IP, Ping, GSM, CDMA, UMTS, LTE, GPS-LAT, GPS-LONG, Last Location update
+
+04NOV20
+TODO: make 'switch to GSM/UMTS' buttons toggle targeted technology on and power non targeted tech off
+

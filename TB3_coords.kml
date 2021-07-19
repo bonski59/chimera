@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+    <Placemark>
+        <name>TB3</name>
+        <description>TB3 location</description>
+        <Point>
+            <coordinates>-103.32407166666665,34.39304166666667,0</coordinates>
+        </Point>
+    </Placemark>
+</kml>

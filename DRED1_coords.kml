@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+    <Placemark>
+        <name>DRED1</name>
+        <description>DRED1 location</description>
+        <Point>
+            <coordinates>-103.32408500000001,34.39289833333333,0</coordinates>
+        </Point>
+    </Placemark>
+</kml>

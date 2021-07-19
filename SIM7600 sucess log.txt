@@ -1,0 +1,670 @@
+once SSH'd in---
+
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT'
+AT
+OK
+
+Enter command: 'AT+CIMI'
+AT+CIMI
+310410278914602
+
+OK
+
+Enter command: 'AT+CSGN'
+AT+CSGN
+ERROR
+
+Enter command: 'AT+CGSNN'
+AT+CGSNN
+ERROR
+
+Enter command: 'AT+CGSN'
+AT+CGSN
+868822040056374
+
+OK
+
+Enter command: 'AT+CNMP=13'
+AT+CNMP=13
+ERROR
+
+
+Enter command: 'AT+CNMP=13'
+AT+CNMP=13
+ERROR
+
+Enter command: 'AT+CNMP?'
+AT+CNMP?
++CNMP: 2
+
+OK
+
+Enter command: 'AT+CFUN=5'
+AT+CFUN=5
+OK
+
+Enter command: 'AT+CNMP+13'
+AT+CNMP+13
+ERROR
+
+^[[AEnter command: 'AT+CNMP=13'
+Traceback (most recent call last):
+  File "phoneshell.py", line 15, in <module>
+    message_raw = input("Enter command: ")
+  Fi'AT+CNMP=13'", line 1
+    ^
+SyntaxError: invalid syntax
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+CNMP=13'
+AT+CNMP=13
+ERROR
+
+Enter command: 'AT+CSQ'
+AT+CSQ
++CSQ: 99,99
+
+OK
+
+Enter command: 'AT+CSPI"
+Traceback (most recent call last):
+  File "phoneshell.py", line 15, in <module>
+    message_raw = input("Enter command: ")
+  File "<string>", line 1
+    'AT+CSPI"
+            ^
+SyntaxError: EOL while scanning string literal
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+CREG?'
+AT+CREG?
++CREG: 0,6
+
+OK
+
+Enter command: 'ATConnection reset by 192.168.1.76 port 22
+
+C:\Users\falcon>ssh pi@192.168.1.76
+ssh: connect to host 192.168.1.76 port 22: Connection timed out
+
+C:\Users\falcon>ssh pi@192.168.1.76
+ssh: connect to host 192.168.1.76 port 22: Connection timed out
+
+C:\Users\falcon>ssh pi@192.168.1.76
+Linux TB4 4.19.118+ #1311 Mon Apr 27 14:16:15 BST 2020 armv6l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Fri Nov  6 11:17:36 2020
+pi@TB4:~ $ ls
+2020-08-03-140642_1920x1080_scrot.png  Desktop    Music         Public                   thinclient_drives
+2020-08-31-130150_1920x1080_scrot.png  Documents  phonescripts  SIM7600X-4G-HAT-Demo.7z  Videos
+Bookshelf                              Downloads  Pictures      Templates
+pi@TB4:~ $ cd /Documents
+-bash: cd: /Documents: No such file or directory
+pi@TB4:~ $ cd Documents
+pi@TB4:~/Documents $ ls
+ deviceinfo  'RnD Test Progamming'
+pi@TB4:~/Documents $ cd 'RnD Test Programming'
+-bash: cd: RnD Test Programming: No such file or directory
+pi@TB4:~/Documents $ cd RnD Test Programming
+-bash: cd: too many arguments
+pi@TB4:~/Documents $ cd /RnD Test Programming
+-bash: cd: too many arguments
+pi@TB4:~/Documents $ cd /'RnD Test Progamming'
+-bash: cd: /RnD Test Progamming: No such file or directory
+pi@TB4:~/Documents $ cd '/RnD Test Progamming'
+-bash: cd: /RnD Test Progamming: No such file or directory
+pi@TB4:~/Documents $ cd 'RnD Test Progamming'
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phonscript.py
+python: can't open file 'phonscript.py': [Errno 2] No such file or directory
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phonescript.py
+python: can't open file 'phonescript.py': [Errno 2] No such file or directory
+pi@TB4:~/Documents/RnD Test Progamming $ ls
+ GPIOtest.py   phoneshell1.py   phoneshell3.py   singleGPIO.py   testcomm.py     testgui.py
+ GPStest.py    phoneshell2.py   phoneshell.py    testcomm2.py   'test file.py'   testmess.py
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT'
+
+
+OK
+
+
+Enter command: 'AT+CIMI?'
+
+
+ERROR
+
+
+Enter command: 'AT+CIMI'
+
+
+
+OK
+
+AT+CIMI
+
+
+310410278914602
+
+
+
+OK
+
+
+Enter command: 'AT+CNMP=13'
+
+
+ERROR
+
+
+Enter command: 'AT+CREG=2'
+Traceback (most recent call last):
+  File "phoneshell.py", line 17, in <module>
+    port.write(message.encode('utf-8'))
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 571, in write
+    raise SerialException('write failed: {}'.format(e))
+serial.serialutil.SerialException: write failed: [Errno 5] Input/output error
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT'
+
+
+OK
+
+
+Enter command: 'AT+CREG=2'
+
+
+OK
+
+
+Enter command: 'AT+CREG?'
+
+
++CREG: 2,6
+
+
+
+OK
+
+
+Enter command: 'AT+COPS=1'
+Traceback (most recent call last):
+  File "phoneshell.py", line 17, in <module>
+    port.write(message.encode('utf-8'))
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 571, in write
+    raise SerialException('write failed: {}'.format(e))
+serial.serialutil.SerialException: write failed: [Errno 5] Input/output error
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+COPS=1'
+
+
+ERROR
+
+
+Enter command: 'AT+COPS=4'
+
+
+ERROR
+
+
+Enter command: 'AT+COPS?'
+Traceback (most recent call last):
+  File "phoneshell.py", line 17, in <module>
+    port.write(message.encode('utf-8'))
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 571, in write
+    raise SerialException('write failed: {}'.format(e))
+serial.serialutil.SerialException: write failed: [Errno 5] Input/output error
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+COPS?'
+
+
++COPS: 0
+
+
+
+OK
+
+
+Enter command: 'AT+COPS=1,2,310410,0'
+Traceback (most recent call last):
+  File "phoneshell.py", line 17, in <module>
+    port.write(message.encode('utf-8'))
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 571, in write
+    raise SerialException('write failed: {}'.format(e))
+serial.serialutil.SerialException: write failed: [Errno 5] Input/output error
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+CGATT?'
+
+
++CGATT: 0
+
+
+
+OK
+
+ATT: 0
+
+
+ERROR
+
+ATT: 0
+
+
+ERROR
+
+ATT: 0
+
+
+ERROR
+
+ATT: 0
+
+
+ERROR
+
+ATT: 0
+
+
+ERROR
+
+ATT: 0
+
+
+ERROR
+
+ATT: 0
+
+
+ERROR
+
+ATT: 0
+
+
+ERROR
+
+ATT: 0
+
+
+ERROR
+
+ATT: 0
+
+
+ERROR
+
+ATT: 0
+
+
+ERROR
+
+ATT:
+Enter command: 'AT+COPS=0'
+
+Enter command: 'AT+COPS=1,2,310410,0'
+Traceback (most recent call last):
+  File "phoneshell.py", line 17, in <module>
+    port.write(message.encode('utf-8'))
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 571, in write
+    raise SerialException('write failed: {}'.format(e))
+serial.serialutil.SerialException: write failed: [Errno 5] Input/output error
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+COPS=1,2,310410,0'
+T+COPS=1,2,310410,0
+
+
+ERROR
+
+
+Enter command: 'AT+COPS=1[,2[,310410[,0]]]
+Traceback (most recent call last):
+  File "phoneshell.py", line 15, in <module>
+    message_raw = input("Enter command: ")
+  File "<string>", line 1
+    'AT+COPS=1[,2[,310410[,0]]]
+                              ^
+SyntaxError: EOL while scanning string literal
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+URAT'
+
+
+ERROR
+
+
+Enter command: 'AT+URAT=0,0'
+
+
+ERROR
+
+
+Enter command: 'AT+URAT=0[,0]
+Traceback (most recent call last):
+  File "phoneshell.py", line 15, in <module>
+    message_raw = input("Enter command: ")
+  File "<string>", line 1
+    'AT+URAT=0[,0]
+                 ^
+SyntaxError: EOL while scanning string literal
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+URAT=0[,0]'
+
+
+ERROR
+
+AT=0[Password:
+
+
+ERROR
+
+
+Enter command: 'AT'
+Traceback (most recent call last):
+  File "phoneshell.py", line 17, in <module>
+    port.write(message.encode('utf-8'))
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 571, in write
+    raise SerialException('write failed: {}'.format(e))
+serial.serialutil.SerialException: write failed: [Errno 5] Input/output error
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+CFUN=4'
+
++CREG: 0
+
+
+Enter command: 'AT'
+
+
+OK
+
+
+Enter command: 'AT'
+Traceback (most recent call last):
+  File "phoneshell.py", line 17, in <module>
+    port.write(message.encode('utf-8'))
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 571, in write
+    raise SerialException('write failed: {}'.format(e))
+serial.serialutil.SerialException: write failed: [Errno 5] Input/output error
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+COPS'
+
+
+OK
+
+
+Enter command: 'AT+COPS?'
+
+
++COPS: 1
+
+
+
+OK
+
+
+Enter command: 'AT'
+
+
+OK
+
+
+Enter command: 'AT+CNMP=13'
+Traceback (most recent call last):
+  File "phoneshell.py", line 28, in <module>
+    rcv = port.read(200)
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 501, in read
+    'device reports readiness to read but returned no data '
+serial.serialutil.SerialException: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+CNMP=13'
+
+
+OK
+
+
+Enter command: 'AT+CSQ'
+
+
++CSQ: 99,99
+
+
+
+OK
+
+
+Enter command: 'AT+CIMI'
+
+
+310410278914602
+
+
+
+OK
+
+
+Enter command: 'AT+COPS=0'
+
+
+OK
+
+
+Enter command: 'AT+CSQ'
+Traceback (most recent call last):
+  File "phoneshell.py", line 17, in <module>
+    port.write(message.encode('utf-8'))
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 571, in write
+    raise SerialException('write failed: {}'.format(e))
+serial.serialutil.SerialException: write failed: [Errno 5] Input/output error
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+CSQ'
+
+
++CSQ: 99,99
+
+
+
+OK
+
+
+Enter command: ^[[A
+Traceback (most recent call last):
+  File "phoneshell.py", line 15, in <module>
+    message_raw = input("Enter command: ")
+  File "<string>", line 1
+    ^
+SyntaxError: invalid syntax
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command:
+Traceback (most recent call last):
+  File "phoneshell.py", line 15, in <module>
+    message_raw = input("Enter command: ")
+  File "<string>", line 0
+
+    ^
+SyntaxError: unexpected EOF while parsing
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'at'
+
+
+OK
+
+
+Enter command: 'AT+UMNOCONF?'
+
+
+ERROR
+
+
+Enter command: 'AT+CFUN?'
+Traceback (most recent call last):
+  File "phoneshell.py", line 17, in <module>
+    port.write(message.encode('utf-8'))
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 571, in write
+    raise SerialException('write failed: {}'.format(e))
+serial.serialutil.SerialException: write failed: [Errno 5] Input/output error
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+CFUN?'
+
+
++CFUN: 4
+
+
+
+OK
+
+
+Enter command: 'AT+CFUN=1'
+
+
+OK
+
+
+Enter command: 'AT+CSQ'
+
+
++CSQ: 19,99
+
+
+
+OK
+
+
+Enter command: 'AT+CREG?'
+Traceback (most recent call last):
+  File "phoneshell.py", line 17, in <module>
+    port.write(message.encode('utf-8'))
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 571, in write
+    raise SerialException('write failed: {}'.format(e))
+serial.serialutil.SerialException: write failed: [Errno 5] Input/output error
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+CREG?'
+
+
++CREG: 2,1,70F3,680429C
+
+
+
+OK
+
+AT+CREGPassword:
+
+
+ERROR
+
+
+
++CMTI: "SM",5
+
+
+Enter command: 'AT+COPS?'
+Traceback (most recent call last):
+  File "phoneshell.py", line 17, in <module>
+    port.write(message.encode('utf-8'))
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 571, in write
+    raise SerialException('write failed: {}'.format(e))
+serial.serialutil.SerialException: write failed: [Errno 5] Input/output error
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+COPS?'
+
+
++COPS: 0,0,"AT&T",2
+
+
+
+OK
+
+AT&T",2
+
+
+ERROR
+
+AT&T",2
+
+
+ERROR
+
+AT&T",2
+
+
+ERROR
+
+AT&T",2
+
+
+ERROR
+
+AT&T",2
+
+
+ERROR
+
+AT&T",2
+
+
+ERROR
+
+AT&T",2
+
+
+ERROR
+
+AT&T",2
+
+
+ERROR
+
+AT&T",2
+
+
+ERROR
+
+AT&T",2
+
+
+ERROR
+
+A
+Enter command: 'AT+CNMP?
+
+pi@TB4:~/Documents/RnD Test Progamming $ sudo python phoneshell.py
+Enter command: 'AT+CNMP?'
+
+Enter command: 'AT+CNMP?'
+
+Enter command: 'AT+CNMP?'
+
+
++CNMP: 2
+
+
+
+OK
+
+
+Enter command: 'AT+CNMP=13'
+
+Enter command: 'AT+CNMP=13'
+
+Enter command: 'AT+CNMP?'
+
+
++CNMP: 13
+
+
+
+OK
+
+
+
+
+
+
+PROCESSES FOR INITIATING 7600g MODULE 
+AT commands 
++CFUN=4 # set to airplane mode
++CFUN=1 # set to full funtionality mode
++CNMP=2 # set to automatic protocol selection
+    Chimera takes over for manual mode reselection after this point 
++CGPSINFO # test gps # heavily dependant on environment, place bucket outside 
++CGPSAUTO=1 # set gps lock to automatic pwr on 
