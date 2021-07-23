@@ -194,6 +194,14 @@ class coordButton(tk.Button):
         self.grid(row=rw, column=cl)
 
 
+class addHostButton(tk.Button):
+    def __init__(self, text, rw, cl, **kw):
+        super().__init__(**kw)
+        self.config(text=text, fg="white", bg="black", width=210, height=50, image=addphoto, compound=tk.LEFT,
+                    command=lambda: add_host_popup())
+        self.grid(row=rw, column=cl, pady=12)
+
+
 # place logging object
 log_window = ScrolledText.ScrolledText(window, state='disabled')
 log_window.grid(row=2, column=1, rowspan=7, columnspan=5, sticky="nsew")
@@ -301,8 +309,11 @@ def run_script(freq):
     # print("cfreq = " + cfreq.get())
     # print("ufreq = " + ufreq)
     # pyscript = ufreq
-    cmd = ['C:\\Users\\falcon\\Documents\\OpenSSH\\ssh.exe', 'pi@' + targetip, '/bin/bash',
-           '/range/relay1on.sh; sudo python /range/' + ufreq + ' ; /range/relay1off.sh; exit ; exit']
+    if "DRED" in comboips.get():
+        cmd = ['C:\\Users\\falcon\\Documents\\OpenSSH\\ssh.exe', 'pi@' + targetip, '/bin/bash', '/range/relay1on.sh; sudo python /range/' + ufreq + ' ; /range/relay1off.sh; exit ; exit']
+    else:
+        cmd = ['C:\\Users\\falcon\\Documents\\OpenSSH\\ssh.exe', 'pi@' + targetip,
+               'sudo python /range/' + ufreq + ' ; exit ; exit']
     print(cmd)
     conout = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
 
@@ -623,8 +634,12 @@ def get_GPS_coords():
     cmdb = ''.join(cmd)
     print(cmdb)
     conout = subprocess.Popen(cmdb, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
-    log(str(comboips.get()) + ' coordinates: ' + conout[0].decode("utf-8"))
     gotstr = str(conout[0])
+    if ",,," in gotstr:
+        log("Could not retrieve coordinates for " + comboips.get())
+        log("Try again after waiting or check for GPS signal obstruction")
+        return
+    log(str(comboips.get()) + ' coordinates: ' + conout[0].decode("utf-8"))
     gotstrb = gotstr.split("'")[1]
     print(gotstrb)
     long = float(gotstrb.split(",")[2])
@@ -640,7 +655,7 @@ def get_GPS_coords():
     write_to_kml(modlon, modlat)
 
 
-def get_name_andfreq(eventObject):
+def select_actions(eventObject):
     targetip = "0.0.0.0"
     for x in goodips:
         if x[1] == comboips.get():
@@ -656,6 +671,12 @@ def get_name_andfreq(eventObject):
     freqselect.config(values=gotfreq)
     freqselect.current(0)
     get_temp()
+    if "TB" in comboips.get():
+        playsoundbutton.config(text="            Run Script                  ")
+        playsoundlbutton.grid_forget()
+    else:
+        playsoundbutton.config(text="            Play Sound                  ")
+        playsoundlbutton.grid(row=7, column=0)
 
 
 def get_temp():
@@ -673,7 +694,7 @@ def get_temp():
 
 
 def write_to_kml(long, lat):
-    kmlname = comboips.get() + "_coords.kml"
+    kmlname = "logging/" + comboips.get() + "_coords.kml"
     kmlf = open(kmlname, "w")
     kmlf.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
     kmlf.close()
@@ -690,8 +711,39 @@ def write_to_kml(long, lat):
     kmlf.close()
 
 
+def add_host_popup():
+    win = tk.Toplevel()
+    win.wm_title("Enter New Host Info")
+
+    l = tk.Label(win, text="Hostname")
+    l.grid(row=0, column=0)
+
+    hosti = tk.Text(win, height=1, width=25)
+    hosti.grid(row=0, column=1)
+
+    r = tk.Label(win, text="IP Address")
+    r.grid(row=1, column=0)
+
+    ipi = tk.Text(win, height=1, width=25)
+    ipi.grid(row=1, column=1)
+
+    b = ttk.Button(win, text="Add", command=lambda: add_host(ipi.get("1.0", tk.END), hosti.get("1.0", tk.END)))
+    b.grid(row=2, column=0)
+
+    b = ttk.Button(win, text="Close", command=win.destroy)
+    b.grid(row=2, column=1)
+
+
+def add_host(ip, host):
+    newip = ip.strip()
+    fullstr = newip + "," + host
+    hfile = open("reference/dredlist.csv", "a")  # switch to append mode
+    hfile.write(fullstr)
+    hfile.close()
+
+
 namelabel = tk.Label(
-    text="Chimera DRED Controller",
+    text="Chimera Main Controller",
     font=("Courier", 20),
     width=23,
     height=5
@@ -705,14 +757,15 @@ dselectlabel = tk.Label(
     height=3
 )
 
-dselectlabel.grid(row=1, column=0)
+dselectlabel.grid(row=2, column=0)
 
 comboips = ttk.Combobox(window, values=goodipnames)
 # comboips.current(0)
 
-comboips.grid(row=2, column=0)
+comboips.grid(row=3, column=0)
 
-comboips.bind("<<ComboboxSelected>>", get_name_andfreq)
+comboips.bind("<<ComboboxSelected>>", select_actions)
+
 
 init_btn = tk.Button(window)
 init_btn.grid(row=2, column=6, sticky="nsew")
@@ -866,7 +919,7 @@ dowentry.grid(row=11, column=5)
 
 playsoundbutton = StandardButton("            Play Sound                  ", freqselect, 6, 0)
 
-playsoundbutton = PlayLocalButton("            Play Sound Locally         ", freqselect, 7, 0)
+playsoundlbutton = PlayLocalButton("            Play Sound Locally         ", freqselect, 7, 0)
 
 addjobbutton = JobButton("       Add CRON Job                  ", freqselect, minentry, houentry, domentry, monthentry,
                          dowentry, 10, 6)
@@ -889,7 +942,9 @@ scbutton = ShowCronButton("    Show CRON jobs               ", 12, 6)
 
 hbutton = HelpButton("       Help Button                  ", window, 0, 6)
 
-timebutton = GetTimeButton("      Get DRED Time         ", 3, 6)
+ahbutton = addHostButton("    Add Host               ", 1, 6)
+
+timebutton = GetTimeButton("      Get Device Time         ", 3, 6)
 
 clearbutton = ClearLogButton("      Clear Log                ", 4, 6)
 
@@ -897,7 +952,7 @@ vncbutton = VNCButton("         Use VNC             ", 6, 6)
 
 sdbutton = ShutDownButton("    Shutdown DRED              ", 14, 6)
 
-coordbutton = coordButton("    Get DRED Coordinates             ", 5, 6)
+coordbutton = coordButton("    Get Coordinates             ", 5, 6)
 
 codelabel = tk.Label(
     text="Job code",

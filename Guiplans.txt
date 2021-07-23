@@ -1,8 +1,4 @@
-on start 
-	initialization process 
-		ping each ras pi
-		thread with module test runs post ping
-		2 csvs and one line updates at a time 
+
 
 UI 
 	device sel. with command options 
